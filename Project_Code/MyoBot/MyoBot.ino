@@ -10,6 +10,8 @@ void setup()
   pinMode(LEFT_R, OUTPUT);
   pinMode(RIGHT_L, OUTPUT);
   pinMode(RIGHT_R, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -24,18 +26,28 @@ void loop()
     char input = Serial.read();
     if (input == '0') {
       stopAll();
+      digitalWrite(RED_LED, HIGH);
+      digitalWrite(GREEN_LED, LOW);
     } else if (input == 'U') {
       leftForward();
       rightForward();
+      digitalWrite(RED_LED, LOW);
+      digitalWrite(GREEN_LED, HIGH);
     } else if (input == 'D') {
       leftBackward();
       rightBackward();
+       digitalWrite(RED_LED, LOW);
+      digitalWrite(GREEN_LED, HIGH);
     } else if (input == 'L') {
       leftBackward();
       rightForward();
+       digitalWrite(RED_LED, LOW);
+      digitalWrite(GREEN_LED, HIGH);
     } else if (input == 'R') {
       leftForward();
       rightBackward();
+       digitalWrite(RED_LED, LOW);
+      digitalWrite(GREEN_LED, HIGH);
     }
   }
 }
